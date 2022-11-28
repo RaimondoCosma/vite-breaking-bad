@@ -10,9 +10,9 @@ export default {
 </script>
 
 <template>
-  <div>
+  <main>
     <CharactersCard />
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped></style>
