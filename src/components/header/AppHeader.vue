@@ -5,14 +5,14 @@ export default {
 </script>
 
 <template>
-  <div>
+  <header>
     <div class="logo-container d-flex align-items-center">
       <div class="logo">
         <img class="w-100" src="../../assets/img/logo.png" alt="#" />
       </div>
       <h1 class="text-white font-weight-bold">Braking Bad Api</h1>
     </div>
-  </div>
+  </header>
 </template>
 
 <style lang="scss" scoped>
