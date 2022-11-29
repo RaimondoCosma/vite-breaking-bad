@@ -15,7 +15,7 @@ export default {
     };
   },
   methods: {
-    cardsFilter() {
+    getCards() {
       axios
         .get("https://www.breakingbadapi.com/api/characters", {
           params: {
@@ -24,21 +24,18 @@ export default {
         })
         .then((resp) => {
           this.store.serieCharacters = resp.data;
-          console.log(resp.data);
         });
     },
   },
   created() {
-    axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
-      this.store.serieCharacters = resp.data;
-    });
+    this.getCards();
   },
 };
 </script>
 
 <template>
   <main>
-    <CharactersCard @search="cardsFilter" />
+    <CharactersCard @search="getCards" />
   </main>
 </template>
 

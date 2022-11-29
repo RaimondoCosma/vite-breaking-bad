@@ -17,6 +17,11 @@ export default {
       store,
     };
   },
+  computed: {
+    getArrayLength() {
+      return this.store.serieCharacters.length;
+    },
+  },
 };
 </script>
 
@@ -38,7 +43,7 @@ export default {
   <!-- Sezione card -->
   <section class="row container-lg m-auto bg-white">
     <div class="w-100 text-white p-3 mt-5 mb-3 my-info">
-      Found {{ store.serieCharacters.length }} Characters
+      Found {{ getArrayLength }} Characters
     </div>
     <AppCard
       v-if="store.serieCharacters.length !== 0"
