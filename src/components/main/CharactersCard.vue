@@ -1,6 +1,7 @@
 <script>
 import { store } from "../../store.js";
 import AppCard from "../commons/AppCard.vue";
+import OptionValue from "../commons/OptionValue.vue";
 import LoadingSpinner from "../commons/LoadingSpinner.vue";
 
 export default {
@@ -11,6 +12,7 @@ export default {
   components: {
     AppCard,
     LoadingSpinner,
+    OptionValue,
   },
   data() {
     return {
@@ -26,25 +28,13 @@ export default {
 </script>
 
 <template>
-  <!-- Parte input option -->
-  <div class="container-lg mt-4 mb-3">
-    <select
-      class="form-select w-auto"
-      aria-label="Default select example"
-      v-model="store.searchValue"
-      @change="$emit('search')"
-    >
-      <option value="" selected>Select Category</option>
-      <option value="Breaking Bad">Breaking Bad</option>
-      <option value="Better Call Saul">Better Call Saul</option>
-    </select>
-  </div>
-  <!-- /Parte input option -->
-  <!-- Sezione card -->
+  <OptionValue @search="$emit('search')" />
   <section class="row container-lg m-auto bg-white">
+    <!-- Tiene conto del numero delle card -->
     <div class="w-100 text-white p-3 mt-5 mb-3 my-info">
       Found {{ getArrayLength }} Characters
     </div>
+    <!-- /Tiene conto del numero delle card -->
     <AppCard
       v-if="store.serieCharacters.length !== 0"
       v-for="character in store.serieCharacters"
@@ -55,7 +45,6 @@ export default {
       <LoadingSpinner />
     </div>
   </section>
-  <!-- /Sezione card -->
 </template>
 
 <style lang="scss" scoped>
