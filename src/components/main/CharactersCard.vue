@@ -1,23 +1,21 @@
 <script>
-import axios from "axios";
+import { store } from "../../store.js";
 import AppCard from "../commons/AppCard.vue";
 import LoadingSpinner from "../commons/LoadingSpinner.vue";
 
 export default {
   name: "CharactersCard",
+  emits: {
+    search: null,
+  },
   components: {
     AppCard,
     LoadingSpinner,
   },
   data() {
     return {
-      serieCharacters: [],
+      store,
     };
-  },
-  created() {
-    axios.get("https://www.breakingbadapi.com/api/characters").then((resp) => {
-      this.serieCharacters = resp.data;
-    });
   },
 };
 </script>
@@ -25,22 +23,26 @@ export default {
 <template>
   <!-- Parte input option -->
   <div class="container-lg mt-4 mb-3">
-    <select class="form-select w-auto" aria-label="Default select example">
-      <option selected>Select Category</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+    <select
+      class="form-select w-auto"
+      aria-label="Default select example"
+      v-model="store.searchValue"
+      @change="$emit('search')"
+    >
+      <option value="" selected>Select Category</option>
+      <option value="Breaking Bad">Breaking Bad</option>
+      <option value="Better Call Saul">Better Call Saul</option>
     </select>
   </div>
   <!-- /Parte input option -->
   <!-- Sezione card -->
   <section class="row container-lg m-auto bg-white">
     <div class="w-100 text-white p-3 mt-5 mb-3 my-info">
-      Found {{ serieCharacters.length }} Characters
+      Found {{ store.serieCharacters.length }} Characters
     </div>
     <AppCard
-      v-if="serieCharacters.length !== 0"
-      v-for="character in serieCharacters"
+      v-if="store.serieCharacters.length !== 0"
+      v-for="character in store.serieCharacters"
       class="my-card"
       :character="character"
     />
