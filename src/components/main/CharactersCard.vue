@@ -21,6 +21,7 @@ export default {
 </script>
 
 <template>
+  <!-- Parte input option -->
   <div class="container-lg mt-4 mb-3">
     <select class="form-select w-auto" aria-label="Default select example">
       <option selected>Select Category</option>
@@ -29,7 +30,9 @@ export default {
       <option value="3">Three</option>
     </select>
   </div>
-  <div class="row container-lg m-auto bg-white">
+  <!-- /Parte input option -->
+  <!-- Sezione card -->
+  <section class="row container-lg m-auto bg-white">
     <div class="w-100 text-white p-3 mt-5 mb-3 my-info">
       Found {{ serieCharacters.length }} Characters
     </div>
@@ -47,7 +50,8 @@ export default {
       <div></div>
     </div>
     <!-- /Parte loading spinner -->
-  </div>
+  </section>
+  <!-- /Sezione card -->
 </template>
 
 <style lang="scss" scoped>
